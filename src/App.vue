@@ -5,7 +5,9 @@
       <div class="nav-wrapper blue darken-1">
         <a href="#" class="brand-logo center">pessoas</a>
       </div>
-      <button @click="buscarDep()" class="waves-effect btn-small green darken-1">Departamento</button>
+      <button @click="buscarDep()" class="waves-effect btn-small green darken-1">Atualizar Departamentos</button> 
+      <br>
+      <button @click="buscarProd()" class="waves-effect btn-small green darken-1">Atualizar Produtos</button>
     </nav>
 
     <div class="container">
@@ -67,6 +69,7 @@
 <script>
   import Pessoa from './services/pessoas'
   import Departamento from './services/departamento'
+  import Produto from './services/produto'
 
   export default{
 
@@ -78,9 +81,18 @@
           cpf:'',
           salario:'',
         },
+        //departamento
         departamento:{
           id:'',
           depnome:'',
+        },
+        //produto
+        produto:{
+          id:'',
+          prodnome:'',
+          precocompra:'',
+          precovenda:'',
+          categoria:'',
         },
         pessoas:[],
         errors:[] 
@@ -126,7 +138,6 @@
         this.pessoa = pessoa
       },
 
-
       remover(pessoa){
 
         if(confirm('Deseja apagar esta pessoa?')){
@@ -147,6 +158,11 @@
       buscarDep(){
         Departamento.listar().then(resposta =>{
           this.departamento = resposta.data
+        })
+      },
+      buscarProd(){
+        Produto.listar().then(resposta =>{
+          this.produto = resposta.data
         })
       }
     }
