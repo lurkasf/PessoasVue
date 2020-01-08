@@ -1,4 +1,4 @@
-# projeto-inicial
+# Pessoa - Vue
 
 ## Project setup
 ```
