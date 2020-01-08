@@ -5,7 +5,7 @@
       <div class="nav-wrapper blue darken-1">
         <a href="#" class="brand-logo center">pessoas</a>
       </div>
-      <button @click="buscar()" class="waves-effect btn-small blue darken-1"></button>
+      <button @click="buscarDep()" class="waves-effect btn-small green darken-1">Departamento</button>
     </nav>
 
     <div class="container">
@@ -144,7 +144,7 @@
         
       },
 
-      buscar(){
+      buscarDep(){
         Departamento.listar().then(resposta =>{
           this.departamento = resposta.data
         })
