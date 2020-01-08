@@ -3,11 +3,13 @@
 
     <nav>
       <div class="nav-wrapper blue darken-1">
-        <a href="#" class="brand-logo center">pessoas</a>
+        <a href="#" class="brand-logo center">{{titulo}}</a>
       </div>
-      <button @click="buscarDep()" class="waves-effect btn-small green darken-1">Atualizar Departamentos</button> 
+      <button @click="MostrarDep()" class="waves-effect btn-small green darken-1">Departamentos</button> 
       <br>
-      <button @click="buscarProd()" class="waves-effect btn-small green darken-1">Atualizar Produtos</button>
+      <button @click="MostrarProd()" class="waves-effect btn-small green darken-1">Produtos</button>
+      <br>
+      <button @click="MostrarPess()" class="waves-effect btn-small green darken-1">Pessoas</button>
     </nav>
 
     <div class="container">
@@ -75,6 +77,9 @@
 
     data(){
       return{
+        
+        titulo:'Pessoas',
+
         pessoa:{
           id:'',
           nome:'',
@@ -155,14 +160,22 @@
         
       },
 
-      buscarDep(){
+      MostrarDep(){
         Departamento.listar().then(resposta =>{
           this.departamento = resposta.data
+          this.titulo = 'Departamentos'
         })
       },
-      buscarProd(){
+      MostrarProd(){
         Produto.listar().then(resposta =>{
           this.produto = resposta.data
+          this.titulo = 'Produtos'
+        })
+      },
+      MostrarPess(){
+        Pessoa.listar().then(resposta =>{
+          this.produto = resposta.data
+          this.titulo = 'Pessoas'
         })
       }
     }
